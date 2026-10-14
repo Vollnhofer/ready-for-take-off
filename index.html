@@ -22,10 +22,11 @@
     <h1>Ready for Take-off!</h1>
     <p class="untertitel">Das Reise-Vokabelspiel – Unit 3</p>
     <ul class="regeln">
-      <li>Links leuchtet ein <strong>deutsches</strong> Wort.</li>
-      <li>Tippe rechts auf das passende <strong>englische</strong>.</li>
-      <li>Richtig: <span class="plus">+1 Punkt</span> · Falsch: <span class="minus">−2 Punkte</span></li>
-      <li>3 Level – und am Ende siehst du, was für ein Reise-Typ du bist.</li>
+      <li>Oben steht ein <strong>deutsches</strong> Wort.</li>
+      <li>Tippe auf das passende <strong>englische</strong>.</li>
+      <li>Richtig: <span class="plus">+1 Punkt</span> · Falsch: <span class="minus">−2 Punkte</span> – und du siehst die Lösung.</li>
+      <li>Was nicht klappt, kommt nach Level 3 in deiner <strong>2. Chance</strong> nochmal.</li>
+      <li>Am Ende siehst du, was für ein Reise-Typ du bist.</li>
     </ul>
     <button id="los" class="knopf gross">Los geht's! ✈️</button>
   </section>
@@ -43,10 +44,7 @@
       </header>
       <div id="gesucht" class="gesucht" aria-live="polite"></div>
     </div>
-    <div class="spalten">
-      <ol id="deutsch" class="liste deutsch" aria-label="Deutsche Wörter"></ol>
-      <div id="englisch" class="liste englisch" aria-label="Englische Wörter"></div>
-    </div>
+    <div id="englisch" class="englisch" aria-label="Englische Wörter"></div>
   </section>
 
   <!-- Zwischen-Bildschirm und Ende -->

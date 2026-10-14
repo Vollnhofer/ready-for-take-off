@@ -2,18 +2,25 @@
 
 const PUNKTE_RICHTIG = 1;
 const PUNKTE_FALSCH = -2;
-const ROT_DAUER_MS = 700;
+const LOESUNG_DAUER_MS = 1500;
 const MAX_PUNKTE = VOKABELN.length * PUNKTE_RICHTIG;
+const ALLE = VOKABELN.map((v, i) => ({ ...v, id: String(i) }));
 
 const el = (id) => document.getElementById(id);
 
 const zustand = {
-  levelIndex: 0,
+  runde: 0, // 0..2 = Level 1..3, 3 = 2. Chance
   punkte: 0,
   fehler: 0,
-  deutschReihe: [],
+  reihe: [],
   aktuell: 0,
+  verpasst: [],
+  ersteRichtig: 0,
+  zweiteRichtig: 0,
+  sperre: false,
 };
+
+const istZweiteChance = () => zustand.runde === LEVELS.length;
 
 function mischen(liste) {
   const kopie = [...liste];
@@ -24,16 +31,18 @@ function mischen(liste) {
   return kopie;
 }
 
-function vokabelnVonLevel(nr) {
-  return VOKABELN.filter((v) => v.level === nr);
+function textSicher(text) {
+  const div = document.createElement("div");
+  div.textContent = text;
+  return div.innerHTML;
 }
 
-// ---------- Spielstart und Level ----------
+// ---------- Ablauf: Start, Level, 2. Chance ----------
 
 function spielStarten() {
-  zustand.levelIndex = 0;
-  zustand.punkte = 0;
-  zustand.fehler = 0;
+  Object.assign(zustand, {
+    runde: 0, punkte: 0, fehler: 0, verpasst: [], ersteRichtig: 0, zweiteRichtig: 0, sperre: false,
+  });
   punkteZeigen();
   el("start").hidden = true;
   el("spiel").hidden = false;
@@ -41,39 +50,32 @@ function spielStarten() {
 }
 
 function levelVorstellen() {
-  const level = LEVELS[zustand.levelIndex];
+  const level = LEVELS[zustand.runde];
   overlayZeigen(`
     <p class="klein">Level ${level.nr} von ${LEVELS.length}</p>
     <h2>${level.name} ✈️</h2>
     <p>${level.hint}</p>
-    <p class="klein">${vokabelnVonLevel(level.nr).length} Wörter</p>
-    <button class="knopf gross" data-aktion="level-los">Los!</button>
+    <p class="klein">${ALLE.filter((v) => v.level === level.nr).length} Wörter</p>
+    <button class="knopf gross" data-aktion="runde-los">Los!</button>
   `);
 }
 
-function levelAufbauen() {
-  const level = LEVELS[zustand.levelIndex];
-  const paare = vokabelnVonLevel(level.nr).map((v, i) => ({ ...v, id: `${level.nr}-${i}` }));
-  zustand.deutschReihe = mischen(paare);
+function rundeStarten() {
+  if (istZweiteChance()) {
+    rundeAufbauen(zustand.verpasst, "2. Chance", "Letzte Runde");
+  } else {
+    const level = LEVELS[zustand.runde];
+    rundeAufbauen(ALLE.filter((v) => v.level === level.nr), `Level ${level.nr}`, level.name);
+  }
+}
+
+function rundeAufbauen(vokabeln, titel, name) {
+  zustand.reihe = mischen(vokabeln);
   zustand.aktuell = 0;
-
-  el("level-nr").textContent = `Level ${level.nr}`;
-  el("level-name").textContent = level.name;
-
-  const deutsch = el("deutsch");
-  deutsch.replaceChildren(
-    ...zustand.deutschReihe.map((v) => {
-      const li = document.createElement("li");
-      li.className = "wort";
-      li.dataset.id = v.id;
-      li.textContent = v.de;
-      return li;
-    })
-  );
-
-  const englisch = el("englisch");
-  englisch.replaceChildren(
-    ...mischen(paare).map((v) => {
+  el("level-nr").textContent = titel;
+  el("level-name").textContent = name;
+  el("englisch").replaceChildren(
+    ...mischen(vokabeln).map((v) => {
       const knopf = document.createElement("button");
       knopf.type = "button";
       knopf.className = "wort";
@@ -82,59 +84,104 @@ function levelAufbauen() {
       return knopf;
     })
   );
-
-  aktuellesMarkieren();
+  gesuchtZeigen();
   window.scrollTo({ top: 0 });
 }
 
-function aktuellesMarkieren() {
-  const gesucht = zustand.deutschReihe[zustand.aktuell];
-  document.querySelectorAll("#deutsch .wort").forEach((li) => {
-    li.classList.toggle("aktuell", gesucht !== undefined && li.dataset.id === gesucht.id);
-  });
-  el("gesucht").innerHTML = gesucht
-    ? `<small>Was heißt auf Englisch …</small>${textSicher(gesucht.de)}`
-    : "";
-  const anteil = zustand.aktuell / zustand.deutschReihe.length;
+function rundeGeschafft() {
+  konfetti(60);
+  const war = zustand.runde;
+  zustand.runde++;
+
+  if (zustand.runde < LEVELS.length) {
+    overlayZeigen(`
+      <h2>Level ${LEVELS[war].nr} geschafft! 🎉</h2>
+      <p>Du hast gerade</p>
+      <p class="gross-zahl">⭐ ${zustand.punkte}</p>
+      <p>Punkte. Weiter zu <strong>${LEVELS[zustand.runde].name}</strong>?</p>
+      <button class="knopf gross" data-aktion="weiter">Weiter ✈️</button>
+    `);
+  } else if (istZweiteChance() && zustand.verpasst.length > 0) {
+    const anzahl = zustand.verpasst.length;
+    overlayZeigen(`
+      <h2>Level 3 geschafft! 🎉</h2>
+      <p class="gross-zahl">⭐ ${zustand.punkte}</p>
+      <p>Jetzt kommt deine <strong>2. Chance</strong>: ${anzahl === 1 ? "das Wort" : `die ${anzahl} Wörter`}, ${anzahl === 1 ? "das" : "die"} vorhin nicht geklappt ${anzahl === 1 ? "hat" : "haben"}.</p>
+      <p class="klein">Richtig +1, falsch −2 – danach ist Schluss.</p>
+      <button class="knopf gross" data-aktion="runde-los">Los!</button>
+    `);
+  } else {
+    endeZeigen();
+  }
+}
+
+// ---------- Fragen und Antworten ----------
+
+function gesuchtZeigen() {
+  const gesucht = zustand.reihe[zustand.aktuell];
+  const box = el("gesucht");
+  box.classList.remove("zeigt-loesung");
+  box.innerHTML = gesucht ? `<small>Was heißt auf Englisch …</small>${textSicher(gesucht.de)}` : "";
+  const anteil = zustand.aktuell / zustand.reihe.length;
   el("balken").style.width = `${Math.round(anteil * 100)}%`;
 }
 
-// ---------- Antworten ----------
+function knopfFuer(id) {
+  return el("englisch").querySelector(`.wort[data-id="${id}"]`);
+}
 
 function antwortGeklickt(knopf) {
-  if (knopf.classList.contains("fertig")) return;
-  const gesucht = zustand.deutschReihe[zustand.aktuell];
+  if (zustand.sperre || knopf.disabled) return;
+  const gesucht = zustand.reihe[zustand.aktuell];
   if (!gesucht) return;
-
   if (knopf.dataset.id === gesucht.id) {
-    richtig(knopf, gesucht);
+    richtig(knopf);
   } else {
-    falsch(knopf);
+    falsch(knopf, gesucht);
   }
 }
 
-function richtig(knopf, gesucht) {
-  knopf.classList.remove("falsch");
+function richtig(knopf) {
   knopf.classList.add("fertig");
   knopf.disabled = true;
-  document.querySelector(`#deutsch .wort[data-id="${gesucht.id}"]`).classList.add("fertig");
   punkteAendern(PUNKTE_RICHTIG, knopf);
-
-  zustand.aktuell++;
-  aktuellesMarkieren();
-  if (zustand.aktuell === zustand.deutschReihe.length) {
-    setTimeout(levelGeschafft, 500);
-  }
+  if (istZweiteChance()) zustand.zweiteRichtig++;
+  else zustand.ersteRichtig++;
+  naechstes();
 }
 
-function falsch(knopf) {
+// Falsch: angetippt wackelt rot, die Lösung leuchtet auf und wird danach rot gesperrt.
+function falsch(knopf, gesucht) {
   zustand.fehler++;
+  if (!istZweiteChance()) zustand.verpasst.push(gesucht);
   punkteAendern(PUNKTE_FALSCH, knopf);
-  knopf.classList.remove("falsch");
-  void knopf.offsetWidth; // Animation neu starten, wenn derselbe Knopf schnell zweimal getippt wird
+  zustand.sperre = true;
+
   knopf.classList.add("falsch");
-  clearTimeout(knopf._rotTimer);
-  knopf._rotTimer = setTimeout(() => knopf.classList.remove("falsch"), ROT_DAUER_MS);
+  const loesung = knopfFuer(gesucht.id);
+  loesung.classList.add("loesung");
+  loesung.disabled = true;
+  loesung.scrollIntoView({ block: "nearest", behavior: "smooth" });
+
+  const box = el("gesucht");
+  box.classList.add("zeigt-loesung");
+  box.innerHTML = `<small>Richtig wäre …</small>${textSicher(gesucht.de)} = ${textSicher(gesucht.en)}`;
+
+  setTimeout(() => {
+    knopf.classList.remove("falsch");
+    loesung.classList.remove("loesung");
+    loesung.classList.add("verpasst");
+    zustand.sperre = false;
+    naechstes();
+  }, LOESUNG_DAUER_MS);
+}
+
+function naechstes() {
+  zustand.aktuell++;
+  gesuchtZeigen();
+  if (zustand.aktuell === zustand.reihe.length) {
+    setTimeout(rundeGeschafft, 600);
+  }
 }
 
 function punkteAendern(wert, quelle) {
@@ -142,10 +189,9 @@ function punkteAendern(wert, quelle) {
   punkteZeigen();
 
   const anzeige = el("punkte");
-  const klasse = wert > 0 ? "hoch" : "runter";
   anzeige.classList.remove("hoch", "runter");
-  void anzeige.offsetWidth;
-  anzeige.classList.add(klasse);
+  void anzeige.offsetWidth; // Animation neu starten
+  anzeige.classList.add(wert > 0 ? "hoch" : "runter");
 
   const rect = quelle.getBoundingClientRect();
   const schwebe = document.createElement("div");
@@ -161,24 +207,7 @@ function punkteZeigen() {
   el("punkte-zahl").textContent = zustand.punkte;
 }
 
-// ---------- Level geschafft und Ende ----------
-
-function levelGeschafft() {
-  konfetti(60);
-  const istLetztes = zustand.levelIndex === LEVELS.length - 1;
-  if (istLetztes) {
-    endeZeigen();
-    return;
-  }
-  const naechstes = LEVELS[zustand.levelIndex + 1];
-  overlayZeigen(`
-    <h2>Level ${LEVELS[zustand.levelIndex].nr} geschafft! 🎉</h2>
-    <p>Du hast gerade</p>
-    <p class="gross-zahl">⭐ ${zustand.punkte}</p>
-    <p>Punkte. Weiter zu <strong>${naechstes.name}</strong>?</p>
-    <button class="knopf gross" data-aktion="weiter">Weiter ✈️</button>
-  `);
-}
+// ---------- Ende ----------
 
 function rangFuer(punkte) {
   return RAENGE.find((r) => punkte >= r.ab);
@@ -186,32 +215,37 @@ function rangFuer(punkte) {
 
 function endeZeigen() {
   const rang = rangFuer(zustand.punkte);
-  const stufe = RAENGE.length - RAENGE.indexOf(rang);
-  const besser = RAENGE[RAENGE.indexOf(rang) - 1];
-  const sterne = RAENGE.map((_, i) => `<span class="${i < stufe ? "an" : ""}">✈️</span>`).join("");
-  const fehlerText = zustand.fehler === 1 ? "1 Fehler" : `${zustand.fehler} Fehler`;
+  const index = RAENGE.indexOf(rang);
+  const stufe = RAENGE.length - index;
+  const besser = RAENGE[index - 1];
+  const flieger = RAENGE.map((_, i) => `<span class="${i < stufe ? "an" : ""}">✈️</span>`).join("");
+  const zweite = zustand.verpasst.length
+    ? `<br>In der 2. Chance: ${zustand.zweiteRichtig} von ${zustand.verpasst.length}`
+    : "";
   const ansporn = besser
     ? `Mit ${besser.ab - zustand.punkte} Punkten mehr wärst du <strong>${besser.titel}</strong>. Schaffst du das?`
     : "Höchste Stufe! Besser geht's nicht. 🏆";
 
   overlayZeigen(`
-    <p class="klein">Du bist …</p>
+    <p class="klein du-bist">Du bist …</p>
     <h2 class="rang-titel">${rang.titel}!</h2>
-    <div class="stufen" aria-label="Stufe ${stufe} von ${RAENGE.length}">${sterne}</div>
+    <div class="stufen" aria-label="Stufe ${stufe} von ${RAENGE.length}">${flieger}</div>
     <img class="rang-bild" src="${rang.bild}" alt="Cartoon: ${rang.titel}" width="400" height="300">
     <p>${rang.text}</p>
     <p class="gross-zahl">⭐ ${zustand.punkte} <span class="klein">von ${MAX_PUNKTE}</span></p>
-    <p class="klein">${fehlerText}</p>
+    <p class="klein">Auf Anhieb richtig: ${zustand.ersteRichtig} von ${ALLE.length}${zweite}</p>
     <p>${ansporn}</p>
     <button class="knopf gross" data-aktion="nochmal">Nochmal spielen 🔁</button>
-  `);
+  `, "ende");
 }
 
 // ---------- Overlay und Konfetti ----------
 
-function overlayZeigen(html) {
+function overlayZeigen(html, art = "") {
+  el("overlay-inhalt").className = `karte overlay-karte ${art}`;
   el("overlay-inhalt").innerHTML = html;
   el("overlay").hidden = false;
+  el("overlay").scrollTop = 0;
   el("overlay-inhalt").querySelector("button")?.focus({ preventScroll: true });
 }
 
@@ -233,12 +267,6 @@ function konfetti(anzahl) {
   }
 }
 
-function textSicher(text) {
-  const div = document.createElement("div");
-  div.textContent = text;
-  return div.innerHTML;
-}
-
 // ---------- Ereignisse ----------
 
 el("los").addEventListener("click", spielStarten);
@@ -250,11 +278,10 @@ el("englisch").addEventListener("click", (e) => {
 
 el("overlay").addEventListener("click", (e) => {
   const aktion = e.target.closest("[data-aktion]")?.dataset.aktion;
-  if (aktion === "level-los") {
+  if (aktion === "runde-los") {
     overlaySchliessen();
-    levelAufbauen();
+    rundeStarten();
   } else if (aktion === "weiter") {
-    zustand.levelIndex++;
     levelVorstellen();
   } else if (aktion === "nochmal") {
     overlaySchliessen();

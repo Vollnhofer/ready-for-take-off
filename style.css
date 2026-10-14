@@ -209,80 +209,83 @@ h1 {
 .gesucht small { display: block; font-size: 13px; font-weight: 600; opacity: 0.65; }
 .gesucht:empty { display: none; }
 
-.spalten {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  align-items: start;
+.gesucht.zeigt-loesung {
+  background: var(--rot);
+  border-color: var(--rot-rand);
 }
 
-.liste {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+/* Englische Wörter: zwei Spalten, Handy hochkant eine */
+.englisch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .wort {
   display: flex;
   align-items: center;
-  min-height: 44px;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 48px;
   padding: 8px 12px;
-  font-size: clamp(14px, 2.1vw, 17px);
+  font-size: clamp(15px, 2.2vw, 18px);
+  font-weight: 600;
   line-height: 1.25;
-  text-align: start;
+  text-align: center;
   background: var(--weiss);
   border: 2px solid var(--rahmen);
   border-radius: 12px;
   box-shadow: 0 2px 0 rgba(20, 60, 110, 0.08);
+  cursor: pointer;
+  scroll-margin-top: 190px;
+  scroll-margin-bottom: 16px;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
 }
+@media (hover: hover) {
+  .wort:not(:disabled):hover { background: #eaf5ff; border-color: #74b9ef; }
+}
+.wort:not(:disabled):active { transform: scale(0.97); }
+.wort:disabled { cursor: default; }
 
-.deutsch .wort { color: #5a6680; }
-.deutsch .wort.aktuell {
-  color: var(--tinte);
-  font-weight: 700;
-  background: var(--gelb);
-  border-color: var(--gelb-rand);
-  animation: leuchten 1.4s ease-in-out infinite;
-}
-@keyframes leuchten {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 179, 0, 0.55); }
-  50% { box-shadow: 0 0 0 7px rgba(255, 179, 0, 0); }
-}
 .wort.fertig {
   color: var(--gruen-text);
   background: var(--gruen);
   border-color: var(--gruen-rand);
+  animation: einrasten 0.35s ease;
 }
-.deutsch .wort.fertig::after, .englisch .wort.fertig::after {
-  content: "✓";
-  margin-inline-start: auto;
-  padding-inline-start: 8px;
-  font-weight: 800;
-}
-
-.englisch .wort {
-  width: 100%;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background 0.15s, border-color 0.15s, transform 0.1s;
-}
-@media (hover: hover) {
-  .englisch .wort:not(.fertig):hover { background: #eaf5ff; border-color: #74b9ef; }
-}
-.englisch .wort:not(.fertig):active { transform: scale(0.97); }
-.englisch .wort.fertig { cursor: default; animation: einrasten 0.35s ease; }
+.wort.fertig::after { content: "✓"; font-weight: 800; }
 @keyframes einrasten {
   50% { transform: scale(1.06); }
 }
-.englisch .wort.falsch {
+
+.wort.falsch {
   background: var(--rot);
   border-color: var(--rot-rand);
   color: #8a1c1c;
   animation: schuetteln 0.4s ease;
 }
+
+/* die richtige Lösung leuchtet kurz, danach rot gesperrt */
+.wort.loesung {
+  color: var(--tinte);
+  background: var(--gelb);
+  border-color: var(--gelb-rand);
+  animation: leuchten 0.75s ease-in-out infinite;
+}
+@keyframes leuchten {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 179, 0, 0.7); transform: scale(1); }
+  50% { box-shadow: 0 0 0 8px rgba(255, 179, 0, 0); transform: scale(1.04); }
+}
+.wort.verpasst {
+  color: #8a1c1c;
+  background: var(--rot);
+  border-color: var(--rot-rand);
+  opacity: 0.85;
+}
+.wort.verpasst::after { content: "✗"; font-weight: 800; }
 @keyframes schuetteln {
   20%, 60% { transform: translateX(-6px); }
   40%, 80% { transform: translateX(6px); }
@@ -377,8 +380,51 @@ h1 {
   .leiste { gap: 8px; padding: 8px 10px; }
   .level-nr { font-size: 16px; }
   .punkte { font-size: 19px; min-width: 56px; }
-  .spalten { gap: 6px; }
   .wort { padding: 7px 8px; }
+}
+@media (max-width: 600px) and (orientation: portrait) {
+  .englisch { grid-template-columns: 1fr; }
+}
+/* niedrige Bildschirme: Endbild kompakter, damit "Nochmal spielen" ohne Scrollen sichtbar ist */
+@media (max-height: 760px) {
+  .overlay-karte { padding: 16px 16px 20px; }
+  .overlay-karte h2 { font-size: 28px; margin: 0 0 4px; }
+  .overlay-karte p { font-size: 16px; margin: 4px 0; }
+  .overlay-karte .gross-zahl { font-size: 32px; margin: 2px 0; }
+  .overlay-karte .knopf { margin-top: 8px; }
+  .stufen { font-size: 17px; margin: 2px 0; }
+  .rang-bild { max-height: 28vh; margin: 4px auto 6px; }
+  .du-bist { display: none; }
+}
+
+/* Handy quer: wenig Höhe, darum kompakte Leiste und Endbild neben dem Text */
+@media (max-height: 500px) {
+  .leiste { padding: 5px 12px; }
+  .level-name { display: none; }
+  .gesucht { margin-top: 6px; padding: 5px 12px; font-size: 19px; }
+  .gesucht small { display: inline; margin-inline-end: 6px; }
+  .wort { min-height: 44px; scroll-margin-top: 110px; }
+
+  .overlay-karte.ende {
+    width: min(760px, 100%);
+    display: grid;
+    grid-template-columns: 46% 1fr;
+    column-gap: 18px;
+    align-items: center;
+  }
+  .overlay-karte.ende > * { grid-column: 2; }
+  .overlay-karte.ende .rang-bild {
+    grid-column: 1;
+    grid-row: 1 / span 8;
+    max-height: none;
+    width: 100%;
+    margin: 0;
+  }
+  .overlay-karte.ende .knopf { justify-self: center; font-size: 18px; padding: 10px 24px; }
+  .overlay-karte.ende h2 { font-size: 24px; }
+  .overlay-karte.ende p { font-size: 14px; margin: 2px 0; }
+  .overlay-karte.ende .gross-zahl { font-size: 26px; }
+  .overlay-karte.ende .klein { font-size: 13px !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
