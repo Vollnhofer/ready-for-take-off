@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <style>
+    .l { stroke: #1f2a44; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+    .t { font-family: "Arial Rounded MT Bold", Arial, Helvetica, sans-serif; font-weight: bold; }
+  </style>
+
+  <!-- Himmel, Sonne, Hügel -->
+  <rect width="400" height="300" fill="#c5ecff"/>
+  <g stroke="#fab005" stroke-width="4" stroke-linecap="round">
+    <path d="M352 8 v10 M352 82 v10 M310 50 h10 M384 50 h10 M322 20 l7 7 M375 73 l7 7 M382 20 l-7 7 M329 73 l-7 7"/>
+  </g>
+  <circle cx="352" cy="50" r="24" fill="#ffd43b"/>
+  <ellipse cx="150" cy="40" rx="34" ry="12" fill="#ffffff"/>
+  <ellipse cx="172" cy="32" rx="22" ry="12" fill="#ffffff"/>
+  <path d="M0 190 Q100 150 200 185 T400 175 V300 H0 Z" fill="#8ce99a"/>
+  <path d="M0 232 Q120 206 240 230 T400 226 V300 H0 Z" fill="#69db7c"/>
+
+  <!-- Wegweiser in alle Richtungen -->
+  <rect class="l" x="64" y="96" width="11" height="160" rx="3" fill="#a0522d"/>
+  <g transform="rotate(-10 70 112)">
+    <path class="l" d="M70 102 H138 L150 113 L138 124 H70 Z" fill="#ffd43b"/>
+    <text x="106" y="118" class="t" font-size="12" fill="#1f2a44" text-anchor="middle">PARIS</text>
+  </g>
+  <g transform="rotate(8 70 142)">
+    <path class="l" d="M70 132 H20 L8 143 L20 154 H70 Z" fill="#ffd43b"/>
+    <text x="42" y="148" class="t" font-size="12" fill="#1f2a44" text-anchor="middle">ROME</text>
+  </g>
+  <g transform="rotate(-40 70 168)">
+    <path class="l" d="M70 158 H150 L162 169 L150 180 H70 Z" fill="#ffffff"/>
+    <text x="113" y="174" class="t" font-size="10" fill="#1f2a44" text-anchor="middle">NORTH POLE</text>
+  </g>
+  <g transform="rotate(18 70 196)">
+    <path class="l" d="M70 186 H124 L136 197 L124 208 H70 Z" fill="#ff8787"/>
+    <text x="100" y="202" class="t" font-size="12" fill="#1f2a44" text-anchor="middle">???</text>
+  </g>
+  <g transform="rotate(-14 70 222)">
+    <path class="l" d="M70 212 H22 L10 223 L22 234 H70 Z" fill="#ffd43b"/>
+    <text x="44" y="228" class="t" font-size="12" fill="#1f2a44" text-anchor="middle">HOME</text>
+  </g>
+
+  <!-- Riesen-Rucksack -->
+  <rect class="l" x="244" y="92" width="76" height="122" rx="18" fill="#2f9e44"/>
+  <rect class="l" x="256" y="150" width="52" height="42" rx="9" fill="#40c057"/>
+  <rect class="l" x="238" y="72" width="88" height="24" rx="12" fill="#ff922b"/>
+  <path d="M260 72 v24 M300 72 v24" stroke="#1f2a44" stroke-width="2"/>
+  <path class="l" d="M318 128 L334 140" fill="none"/>
+  <circle class="l" cx="338" cy="154" r="13" fill="#495057"/>
+  <circle cx="338" cy="154" r="6" fill="#343a40"/>
+  <path class="l" d="M316 112 q12 -2 14 10" fill="none"/>
+  <rect class="l" x="322" y="116" width="10" height="16" rx="3" fill="#e8457a" stroke-width="2"/>
+
+  <!-- Beine: Socken in Sandalen -->
+  <path class="l" d="M222 198 L254 198 L256 224 L240 224 L238 214 L236 224 L220 224 Z" fill="#c9a66b"/>
+  <path d="M228 224 V252 M248 224 V252" stroke="#1f2a44" stroke-width="10" stroke-linecap="round"/>
+  <path d="M228 224 V252 M248 224 V252" stroke="#f5c9a0" stroke-width="5" stroke-linecap="round"/>
+  <rect class="l" x="222" y="234" width="12" height="20" rx="3" fill="#ffffff" stroke-width="2"/>
+  <rect class="l" x="242" y="234" width="12" height="20" rx="3" fill="#ffffff" stroke-width="2"/>
+  <path class="l" d="M216 258 h22 M238 258 h22" stroke="#8d5a2b" stroke-width="6"/>
+
+  <!-- Körper, Hawaii-Hemd -->
+  <path class="l" d="M218 152 Q238 142 258 152 L258 202 L218 202 Z" fill="#74c0fc"/>
+  <circle cx="228" cy="166" r="4" fill="#f783ac"/>
+  <circle cx="248" cy="180" r="4" fill="#f783ac"/>
+  <circle cx="232" cy="192" r="4" fill="#ffd43b"/>
+  <path d="M255 152 L246 200" stroke="#1f2a44" stroke-width="4"/>
+
+  <!-- Arme und Karte (verkehrt herum) -->
+  <path d="M222 160 L184 176 M254 160 L238 178" stroke="#1f2a44" stroke-width="11" stroke-linecap="round"/>
+  <path d="M222 160 L184 176 M254 160 L238 178" stroke="#f5c9a0" stroke-width="6" stroke-linecap="round"/>
+  <g transform="rotate(-6 206 176)">
+    <rect class="l" x="172" y="154" width="66" height="46" rx="3" fill="#fff3bf"/>
+    <path d="M180 190 q14 -20 26 -6 t24 -20" stroke="#e03131" stroke-width="2.5" fill="none" stroke-dasharray="4 4"/>
+    <text x="205" y="165" class="t" font-size="13" fill="#1f2a44" text-anchor="middle" transform="rotate(180 205 160)">MAP</text>
+    <path d="M220 186 l6 6 m0 -6 l-6 6" stroke="#e03131" stroke-width="2.5"/>
+  </g>
+  <circle class="l" cx="180" cy="178" r="7" fill="#f5c9a0"/>
+  <circle class="l" cx="238" cy="180" r="7" fill="#f5c9a0"/>
+
+  <!-- Kopf mit Sonnenhut und Sonnencreme -->
+  <circle class="l" cx="238" cy="118" r="29" fill="#f5c9a0"/>
+  <ellipse class="l" cx="225" cy="117" rx="8" ry="9" fill="#ffffff" stroke-width="2.5"/>
+  <ellipse class="l" cx="249" cy="117" rx="8" ry="9" fill="#ffffff" stroke-width="2.5"/>
+  <circle cx="222" cy="121" r="3.5" fill="#1f2a44"/>
+  <circle cx="246" cy="121" r="3.5" fill="#1f2a44"/>
+  <path d="M215 104 L231 108 M243 106 L258 100" stroke="#1f2a44" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="237" cy="128" rx="7" ry="5" fill="#ffffff"/>
+  <path d="M214 130 h8 M214 135 h8 M254 130 h8 M254 135 h8" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <path d="M227 140 q4 -4 8 0 q4 4 8 0" stroke="#1f2a44" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path class="l" d="M214 96 Q216 70 238 70 Q260 70 262 96 Z" fill="#ffe066"/>
+  <ellipse class="l" cx="238" cy="96" rx="46" ry="9" fill="#ffe066"/>
+  <path d="M215 90 h46" stroke="#e8457a" stroke-width="5"/>
+
+  <!-- Fragezeichen -->
+  <text x="176" y="78" class="t" font-size="34" fill="#e8457a">?</text>
+  <text x="198" y="50" class="t" font-size="26" fill="#e8457a">?</text>
+  <text x="160" y="42" class="t" font-size="20" fill="#e8457a">?</text>
+
+  <!-- Schnecke überholt -->
+  <path d="M286 262 h-16 M290 270 h-22 M286 278 h-14" stroke="#1f2a44" stroke-width="2.5" stroke-linecap="round"/>
+  <path class="l" d="M296 282 Q340 286 382 280 Q392 278 390 266 L384 256 Q378 270 360 272 L300 274 Q292 276 296 282 Z" fill="#ffd8a8"/>
+  <path class="l" d="M380 258 L378 238 M388 260 L392 240" fill="none" stroke-width="2.5"/>
+  <circle cx="378" cy="236" r="3.5" fill="#1f2a44"/>
+  <circle cx="392" cy="238" r="3.5" fill="#1f2a44"/>
+  <circle class="l" cx="336" cy="256" r="20" fill="#e8590c"/>
+  <path d="M336 256 m-2 0 a3 3 0 1 1 5 2 a8 8 0 1 1 -12 -6 a13 13 0 1 1 18 14" stroke="#1f2a44" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path class="l" d="M324 238 L324 222" fill="none" stroke-width="2"/>
+  <path class="l" d="M324 222 L340 226 L324 232 Z" fill="#ffd43b" stroke-width="2"/>
+  <path class="l" d="M352 218 L360 228 L346 222 Z" fill="#ffffff"/>
+  <rect class="l" x="300" y="192" width="96" height="28" rx="14" fill="#ffffff"/>
+  <text x="348" y="211" class="t" font-size="13" fill="#1f2a44" text-anchor="middle">Excuse me!</text>
+</svg>

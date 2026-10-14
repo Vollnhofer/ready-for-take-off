@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <style>
+    .l { stroke: #1f2a44; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+    .t { font-family: "Arial Rounded MT Bold", Arial, Helvetica, sans-serif; font-weight: bold; }
+  </style>
+
+  <!-- Himmel, Meer, Strand -->
+  <rect width="400" height="300" fill="#99e9f2"/>
+  <rect y="168" width="400" height="40" fill="#22b8cf"/>
+  <path d="M0 206 Q100 196 200 206 T400 204 V300 H0 Z" fill="#ffe066"/>
+
+  <!-- Sonne mit Sonnenbrille -->
+  <g stroke="#fab005" stroke-width="4" stroke-linecap="round">
+    <path d="M50 4 v10 M50 86 v10 M4 50 h10 M86 50 h10 M18 18 l7 7 M75 75 l7 7 M82 18 l-7 7 M25 75 l-7 7"/>
+  </g>
+  <circle class="l" cx="50" cy="50" r="28" fill="#ffd43b"/>
+  <path class="l" d="M30 44 h40 v3 q-2 9 -10 9 q-8 0 -9 -9 h-2 q-1 9 -9 9 q-8 0 -10 -9 Z" fill="#1f2a44" stroke-width="2"/>
+  <path class="l" d="M38 62 Q50 72 62 62" fill="none" stroke-width="2.5"/>
+
+  <!-- Flieger mit Banner -->
+  <path d="M240 44 L224 40 M240 44 L224 62" stroke="#1f2a44" stroke-width="1.5"/>
+  <path class="l" d="M106 36 H224 V66 H106 L116 51 Z" fill="#ffffff" stroke-width="2.5"/>
+  <text x="168" y="56" class="t" font-size="12" fill="#e8457a" text-anchor="middle">PRO TOURIST ★</text>
+  <g transform="translate(238 18) scale(0.7)">
+    <path class="l" d="M16 30 L7 7 L22 7 L36 24 Z" fill="#e8457a"/>
+    <path class="l" d="M10 29 Q10 22 20 22 L92 22 Q112 24 116 32 Q112 40 96 40 L22 40 Q10 40 10 34 Z" fill="#ffffff"/>
+    <path class="l" d="M48 33 L70 33 L58 55 L44 55 Z" fill="#9fd4f7"/>
+  </g>
+
+  <!-- Palmen -->
+  <path class="l" d="M64 262 Q70 190 92 126 L104 130 Q84 192 80 262 Z" fill="#a0522d"/>
+  <path class="l" d="M318 262 Q314 190 292 126 L304 122 Q330 190 334 262 Z" fill="#a0522d"/>
+  <g fill="#40c057" class="l" stroke-width="2.5">
+    <path d="M98 128 Q66 90 34 108 Q64 126 98 128 Z"/>
+    <path d="M98 128 Q84 88 108 66 Q110 100 98 128 Z"/>
+    <path d="M98 128 Q132 90 164 108 Q132 126 98 128 Z"/>
+    <path d="M98 128 Q130 124 142 152 Q116 134 98 128 Z"/>
+    <path d="M98 128 Q70 130 58 156 Q82 136 98 128 Z"/>
+    <path d="M298 124 Q266 86 236 104 Q266 122 298 124 Z"/>
+    <path d="M298 124 Q312 84 290 62 Q286 98 298 124 Z"/>
+    <path d="M298 124 Q330 88 364 104 Q332 122 298 124 Z"/>
+    <path d="M298 124 Q326 122 340 148 Q314 130 298 124 Z"/>
+  </g>
+  <circle class="l" cx="96" cy="134" r="6" fill="#8d5a2b" stroke-width="2"/>
+  <circle class="l" cx="106" cy="132" r="6" fill="#8d5a2b" stroke-width="2"/>
+
+  <!-- Hängematte -->
+  <path d="M94 150 L118 166 M300 146 L278 164" stroke="#1f2a44" stroke-width="2.5"/>
+  <path class="l" d="M114 164 Q196 182 282 162 Q200 236 114 164 Z" fill="#ff8787"/>
+  <path d="M130 178 Q198 198 266 176 M150 194 Q198 212 246 192" stroke="#ffffff" stroke-width="5" fill="none"/>
+
+  <!-- Profi im Liegen -->
+  <path class="l" d="M248 166 L262 132 L274 134 L262 168 Z" fill="#f5c9a0" stroke-width="2.5"/>
+  <ellipse class="l" cx="268" cy="130" rx="9" ry="6" fill="#f5c9a0" transform="rotate(-20 268 130)"/>
+  <path class="l" d="M232 170 L242 136 L254 138 L246 172 Z" fill="#f5c9a0" stroke-width="2.5"/>
+  <ellipse class="l" cx="248" cy="134" rx="9" ry="6" fill="#f5c9a0" transform="rotate(-20 248 134)"/>
+  <circle class="l" cx="150" cy="150" r="24" fill="#f5c9a0"/>
+  <path class="l" d="M128 142 Q136 122 154 126 Q170 128 172 144 Q156 136 128 142 Z" fill="#6b3f1f"/>
+  <path class="l" d="M132 148 h36 v3 q-2 8 -9 8 q-7 0 -8 -8 h-2 q-1 8 -8 8 q-7 0 -9 -8 Z" fill="#1f2a44" stroke-width="2"/>
+  <path class="l" d="M138 164 Q151 176 164 162" fill="#ffffff" stroke-width="2.5"/>
+  <path d="M170 160 L190 130" stroke="#1f2a44" stroke-width="11" stroke-linecap="round"/>
+  <path d="M170 160 L190 130" stroke="#f5c9a0" stroke-width="6" stroke-linecap="round"/>
+  <circle class="l" cx="192" cy="122" r="12" fill="#8d5a2b"/>
+  <path d="M192 112 L202 92" stroke="#e8457a" stroke-width="3" stroke-linecap="round"/>
+  <path class="l" d="M184 104 Q194 90 206 100 Z" fill="#fab005" stroke-width="2"/>
+  <circle class="l" cx="190" cy="128" r="6" fill="#f5c9a0" stroke-width="2"/>
+  <text x="206" y="150" class="t" font-size="18" fill="#1f2a44">z</text>
+  <text x="216" y="136" class="t" font-size="14" fill="#1f2a44">z</text>
+
+  <!-- Kamel mit Sonnenbrille -->
+  <path d="M358 256 v32 M374 258 v30 M390 256 v32" stroke="#1f2a44" stroke-width="7" stroke-linecap="round"/>
+  <path d="M358 256 v32 M374 258 v30 M390 256 v32" stroke="#e0a96d" stroke-width="3" stroke-linecap="round"/>
+  <path class="l" d="M346 256 Q340 226 362 222 Q370 200 384 220 Q392 204 404 222 L404 262 Q370 266 346 256 Z" fill="#e0a96d"/>
+  <path class="l" d="M350 242 Q336 222 342 196 L356 196 Q352 220 366 232 Z" fill="#e0a96d"/>
+  <ellipse class="l" cx="362" cy="177" rx="4" ry="7" fill="#e0a96d" stroke-width="2"/>
+  <path class="l" d="M332 196 Q330 180 348 176 Q364 174 366 188 Q366 198 354 200 L340 202 Q332 202 332 196 Z" fill="#e0a96d"/>
+  <path class="l" d="M336 184 h24 v3 q-1 7 -6 7 q-6 0 -6 -7 h-1 q-1 7 -6 7 q-5 0 -5 -7 Z" fill="#1f2a44" stroke-width="2"/>
+  <path d="M335 196 q6 4 13 0" stroke="#1f2a44" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <circle cx="334" cy="190" r="1.5" fill="#1f2a44"/>
+
+  <!-- Krabbe applaudiert -->
+  <ellipse class="l" cx="190" cy="268" rx="20" ry="12" fill="#ff6b6b"/>
+  <path class="l" d="M172 262 L160 246 M208 262 L220 246" fill="none"/>
+  <path class="l" d="M152 240 q8 -10 14 2 q-6 -2 -8 4 Z M228 240 q-8 -10 -14 2 q6 -2 8 4 Z" fill="#ff6b6b" stroke-width="2"/>
+  <circle cx="184" cy="260" r="2.5" fill="#1f2a44"/>
+  <circle cx="196" cy="260" r="2.5" fill="#1f2a44"/>
+  <path d="M174 276 l-8 8 M206 276 l8 8 M180 279 l-4 9 M200 279 l4 9" stroke="#1f2a44" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="190" y="232" class="t" font-size="13" fill="#1f2a44" text-anchor="middle">Respect!</text>
+</svg>

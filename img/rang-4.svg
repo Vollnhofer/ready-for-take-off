@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <style>
+    .l { stroke: #1f2a44; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+    .t { font-family: "Arial Rounded MT Bold", Arial, Helvetica, sans-serif; font-weight: bold; }
+  </style>
+  <defs>
+    <linearGradient id="himmel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#74c0fc"/>
+      <stop offset="1" stop-color="#d0ebff"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Himmel, Sonne, Insel, Meer -->
+  <rect width="400" height="300" fill="url(#himmel)"/>
+  <circle cx="352" cy="46" r="24" fill="#ffd43b"/>
+  <path d="M330 196 Q365 176 400 192 V200 H330 Z" fill="#ffe066"/>
+  <path d="M372 188 Q368 160 376 140" stroke="#8d5a2b" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M376 140 q-18 -4 -26 8 M376 140 q16 -6 24 4 M376 140 q-6 -14 -18 -16 M376 140 q8 -14 20 -14" stroke="#2f9e44" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <rect y="194" width="400" height="106" fill="#339af0"/>
+  <path d="M0 222 q20 -8 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 M0 270 q20 -8 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0" stroke="#74c0fc" stroke-width="4" fill="none"/>
+
+  <!-- Delfin -->
+  <path class="l" d="M332 248 L314 242 L322 252 L314 264 Z" fill="#748ffc"/>
+  <path class="l" d="M342 226 L338 206 L356 222 Z" fill="#748ffc"/>
+  <ellipse class="l" cx="355" cy="232" rx="30" ry="12" fill="#748ffc" transform="rotate(-35 355 232)"/>
+  <ellipse class="l" cx="387" cy="210" rx="9" ry="4" fill="#748ffc" transform="rotate(-35 387 210)"/>
+  <path d="M342 246 Q360 238 374 222" stroke="#dbe4ff" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <circle cx="370" cy="219" r="2.2" fill="#1f2a44"/>
+  <circle cx="320" cy="272" r="3" fill="#ffffff"/>
+  <circle cx="332" cy="280" r="2.5" fill="#ffffff"/>
+  <circle cx="310" cy="282" r="2" fill="#ffffff"/>
+
+  <!-- Segel und Mast -->
+  <path d="M232 46 V206" stroke="#1f2a44" stroke-width="6" stroke-linecap="round"/>
+  <path class="l" d="M238 54 L238 196 L330 196 Z" fill="#ffffff"/>
+  <path d="M238 120 L291 120 M238 160 L313 160" stroke="#e8457a" stroke-width="7"/>
+  <path class="l" d="M226 66 L226 196 L162 196 Z" fill="#ffe3ec"/>
+  <path class="l" d="M232 46 L256 52 L232 60 Z" fill="#e8457a" stroke-width="2"/>
+
+  <!-- Boot -->
+  <path class="l" d="M58 204 L346 204 L318 248 L88 248 Z" fill="#ffffff"/>
+  <path d="M70 222 H334" stroke="#e8457a" stroke-width="6"/>
+  <text x="250" y="242" class="t" font-size="13" fill="#1f2a44" text-anchor="middle">SEA YOU</text>
+
+  <!-- Kapitän: Körper -->
+  <path class="l" d="M92 156 Q114 146 136 156 L136 206 L92 206 Z" fill="#1c7ed6"/>
+  <path d="M92 168 H136 M92 182 H136 M92 196 H136" stroke="#ffffff" stroke-width="4"/>
+  <path d="M132 160 L156 136" stroke="#1f2a44" stroke-width="11" stroke-linecap="round"/>
+  <path d="M132 160 L156 136" stroke="#f5c9a0" stroke-width="6" stroke-linecap="round"/>
+  <circle class="l" cx="158" cy="132" r="8" fill="#f5c9a0"/>
+  <path class="l" d="M157 124 v-10" stroke-width="5"/>
+  <path d="M157 124 v-10" stroke="#f5c9a0" stroke-width="2" stroke-linecap="round"/>
+  <path d="M96 162 L66 172" stroke="#1f2a44" stroke-width="11" stroke-linecap="round"/>
+  <path d="M96 162 L66 172" stroke="#f5c9a0" stroke-width="6" stroke-linecap="round"/>
+  <path class="l" d="M58 168 L78 168 L74 192 L62 192 Z" fill="#e03131"/>
+  <path d="M61 168 l-2 -14 M66 168 l0 -16 M71 168 l1 -15 M76 168 l3 -12" stroke="#fab005" stroke-width="4" stroke-linecap="round"/>
+  <circle class="l" cx="66" cy="174" r="7" fill="#f5c9a0"/>
+
+  <!-- Kapitän: Kopf -->
+  <circle class="l" cx="114" cy="124" r="28" fill="#f5c9a0"/>
+  <path class="l" d="M88 108 Q90 84 114 84 Q138 84 140 108 Z" fill="#ffffff"/>
+  <path class="l" d="M86 108 H142 Q144 116 136 116 H92 Q84 116 86 108 Z" fill="#1f2a44"/>
+  <path d="M114 92 v10 M109 97 h10 M108 100 q6 6 12 0" stroke="#fab005" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path class="l" d="M96 124 h36 v4 q-2 8 -9 8 q-7 0 -8 -8 h-2 q-1 8 -8 8 q-7 0 -9 -8 Z" fill="#1f2a44" stroke-width="2"/>
+  <path class="l" d="M102 142 Q114 154 126 142" fill="none" stroke-width="2.5"/>
+
+  <!-- Möwe klaut Pommes -->
+  <g transform="translate(-14 -34)">
+  <path class="l" d="M40 92 Q54 76 70 92 Q86 76 100 92 Q86 86 70 98 Q54 86 40 92 Z" fill="#dee2e6"/>
+  <ellipse class="l" cx="70" cy="100" rx="16" ry="10" fill="#ffffff"/>
+  <circle class="l" cx="58" cy="102" r="8" fill="#ffffff"/>
+  <path class="l" d="M50 103 L40 108 L50 108 Z" fill="#fab005" stroke-width="2"/>
+  <path d="M42 108 L34 120" stroke="#fab005" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="57" cy="100" r="2" fill="#1f2a44"/>
+  <path d="M53 95 L61 97" stroke="#1f2a44" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Sprechblase -->
+  <path class="l" d="M128 74 L118 90 L140 76 Z" fill="#ffffff"/>
+  <rect class="l" x="112" y="44" width="110" height="30" rx="15" fill="#ffffff"/>
+  <text x="167" y="64" class="t" font-size="13" fill="#1f2a44" text-anchor="middle">Hey! My fries!</text>
+</svg>

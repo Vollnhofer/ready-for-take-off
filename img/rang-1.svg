@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <style>
+    .l { stroke: #1f2a44; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+    .t { font-family: "Arial Rounded MT Bold", Arial, Helvetica, sans-serif; font-weight: bold; }
+  </style>
+
+  <!-- Himmel und Rollfeld -->
+  <rect width="400" height="300" fill="#bfe6ff"/>
+  <rect y="205" width="400" height="95" fill="#a8b2bd"/>
+  <path d="M0 270 H400" stroke="#ffffff" stroke-width="5" stroke-dasharray="26 18"/>
+
+  <!-- Anzeigetafel -->
+  <rect x="16" y="16" width="150" height="72" rx="8" fill="#1f2a44"/>
+  <text x="28" y="36" class="t" font-size="12" fill="#ffd43b">DEPARTURES</text>
+  <text x="28" y="57" class="t" font-size="15" fill="#ffffff">FLIGHT 303</text>
+  <text x="28" y="78" class="t" font-size="15" fill="#ff6b6b">GONE! :(</text>
+
+  <!-- Flieger fliegt davon -->
+  <g transform="translate(262 22) rotate(-12) scale(0.9)">
+    <path class="l" d="M16 30 L7 7 L22 7 L36 24 Z" fill="#e8457a"/>
+    <path class="l" d="M10 29 Q10 22 20 22 L92 22 Q112 24 116 32 Q112 40 96 40 L22 40 Q10 40 10 34 Z" fill="#ffffff"/>
+    <path class="l" d="M48 33 L70 33 L58 55 L44 55 Z" fill="#9fd4f7"/>
+  </g>
+  <path d="M252 72 h-26 M256 84 h-18" stroke="#1f2a44" stroke-width="2.5" stroke-linecap="round"/>
+  <path class="l" d="M248 34 L266 30 L248 46 Z" fill="#ffffff"/>
+  <rect class="l" x="176" y="22" width="74" height="28" rx="14" fill="#ffffff"/>
+  <text x="213" y="41" class="t" font-size="13" fill="#1f2a44" text-anchor="middle">Bye bye!</text>
+
+  <!-- Taube mit Sandwich -->
+  <path class="l" d="M47 236 L30 228 L35 248 Z" fill="#868e96"/>
+  <ellipse class="l" cx="70" cy="240" rx="24" ry="16" fill="#adb5bd"/>
+  <path class="l" d="M56 238 q14 -12 28 2 q-14 8 -28 -2 Z" fill="#868e96"/>
+  <path d="M64 256 v9 M78 256 v9" stroke="#f08c00" stroke-width="3" stroke-linecap="round"/>
+  <circle class="l" cx="94" cy="222" r="12" fill="#adb5bd"/>
+  <circle cx="98" cy="219" r="3.2" fill="#1f2a44"/>
+  <path d="M91 211 L103 215" stroke="#1f2a44" stroke-width="2.5" stroke-linecap="round"/>
+  <path class="l" d="M105 220 L116 224 L105 228 Z" fill="#ffa94d" stroke-width="2"/>
+  <g transform="rotate(12 124 224)">
+    <path class="l" d="M110 216 L140 212 L128 236 Z" fill="#ffe8a3"/>
+    <path d="M114 219 L135 216" stroke="#51cf66" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <path class="l" d="M84 200 L92 210 L72 200 Z" fill="#ffffff"/>
+  <rect class="l" x="40" y="172" width="76" height="28" rx="14" fill="#ffffff"/>
+  <text x="78" y="191" class="t" font-size="13" fill="#1f2a44" text-anchor="middle">Yummy!</text>
+
+  <!-- verlorener Schuh -->
+  <ellipse class="l" cx="140" cy="276" rx="14" ry="7" fill="#e8457a" transform="rotate(-25 140 276)"/>
+
+  <!-- Koffer, aufgeplatzt -->
+  <path class="l" d="M270 210 L258 168 L336 160 L346 208 Z" fill="#d68be6"/>
+  <rect class="l" x="266" y="208" width="84" height="48" rx="8" fill="#be4bdb"/>
+  <circle class="l" cx="290" cy="232" r="9" fill="#ffd43b" stroke-width="2"/>
+  <rect class="l" x="306" y="224" width="30" height="16" rx="3" fill="#ffffff" stroke-width="2"/>
+  <text x="321" y="236" class="t" font-size="9" fill="#e8457a" text-anchor="middle">NYC</text>
+
+  <!-- fliegende Sachen -->
+  <g transform="rotate(-20 300 145)">
+    <path class="l" d="M292 128 v22 q0 9 10 9 h13 v-10 h-11 v-21 Z" fill="#ffffff"/>
+    <path d="M292 135 h12 M292 141 h12" stroke="#e03131" stroke-width="3"/>
+  </g>
+  <g transform="rotate(15 338 126)">
+    <path class="l" d="M320 116 h36 l-4 20 h-9 l-5 -8 l-5 8 h-9 Z" fill="#ff8787"/>
+    <circle cx="330" cy="123" r="2.5" fill="#ffffff"/>
+    <circle cx="342" cy="121" r="2.5" fill="#ffffff"/>
+    <circle cx="349" cy="128" r="2.5" fill="#ffffff"/>
+  </g>
+  <g transform="rotate(-15 372 168)">
+    <ellipse class="l" cx="372" cy="172" rx="15" ry="10" fill="#ffd43b"/>
+    <circle class="l" cx="380" cy="158" r="8" fill="#ffd43b"/>
+    <path class="l" d="M387 158 L395 160 L387 163 Z" fill="#ff922b" stroke-width="2"/>
+    <circle cx="382" cy="156" r="1.8" fill="#1f2a44"/>
+  </g>
+  <rect class="l" x="248" y="144" width="30" height="5" rx="2" fill="#4dabf7" stroke-width="2" transform="rotate(-30 263 146)"/>
+  <path d="M352 190 q8 -4 6 -12 M318 100 q4 -6 10 -6" stroke="#1f2a44" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- Arme hoch (Panik) -->
+  <path d="M178 160 L154 130 L148 104 M208 160 L232 130 L238 104" fill="none" stroke="#1f2a44" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M178 160 L154 130 L148 104 M208 160 L232 130 L238 104" fill="none" stroke="#f5c9a0" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle class="l" cx="148" cy="101" r="8" fill="#f5c9a0"/>
+  <circle class="l" cx="238" cy="101" r="8" fill="#f5c9a0"/>
+
+  <!-- Beine, ein Schuh fehlt -->
+  <path class="l" d="M176 196 L172 246 L188 246 L193 216 L198 246 L214 246 L210 196 Z" fill="#3b5bdb"/>
+  <ellipse class="l" cx="178" cy="250" rx="14" ry="7" fill="#e8457a"/>
+  <ellipse class="l" cx="208" cy="250" rx="12" ry="7" fill="#ffffff"/>
+  <circle cx="213" cy="249" r="2.5" fill="#f5c9a0"/>
+
+  <!-- Körper -->
+  <path class="l" d="M172 156 Q193 146 214 156 L214 202 L172 202 Z" fill="#ffb300"/>
+  <text x="193" y="186" class="t" font-size="12" fill="#1f2a44" text-anchor="middle">OOPS</text>
+
+  <!-- Kopf -->
+  <circle class="l" cx="163" cy="122" r="7" fill="#f5c9a0"/>
+  <circle class="l" cx="223" cy="122" r="7" fill="#f5c9a0"/>
+  <circle class="l" cx="193" cy="120" r="30" fill="#f5c9a0"/>
+  <path class="l" d="M164 106 L160 84 L175 95 L179 76 L191 92 L200 74 L206 93 L221 80 L222 106 Q193 90 164 106 Z" fill="#6b3f1f"/>
+  <ellipse class="l" cx="182" cy="117" rx="9" ry="11" fill="#ffffff" stroke-width="2.5"/>
+  <ellipse class="l" cx="204" cy="117" rx="9" ry="11" fill="#ffffff" stroke-width="2.5"/>
+  <circle cx="185" cy="113" r="3.6" fill="#1f2a44"/>
+  <circle cx="207" cy="113" r="3.6" fill="#1f2a44"/>
+  <ellipse class="l" cx="193" cy="138" rx="8" ry="9" fill="#7a1f2b" stroke-width="2.5"/>
+  <path class="l" d="M232 98 q7 11 0 15 q-7 -4 0 -15 Z" fill="#74c0fc" stroke-width="2"/>
+  <path class="l" d="M154 102 q6 10 0 13 q-6 -3 0 -13 Z" fill="#74c0fc" stroke-width="2"/>
+</svg>

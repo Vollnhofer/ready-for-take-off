@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>Ready for Take-off! – Reise-Vokabeln</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="himmel" aria-hidden="true">
+    <span class="wolke w1"></span>
+    <span class="wolke w2"></span>
+    <span class="wolke w3"></span>
+    <img class="flieger" src="img/flieger.svg" alt="">
+  </div>
+
+  <!-- Start -->
+  <section id="start" class="karte start">
+    <img class="start-bild" src="img/flieger.svg" alt="">
+    <h1>Ready for Take-off!</h1>
+    <p class="untertitel">Das Reise-Vokabelspiel – Unit 3</p>
+    <ul class="regeln">
+      <li>Links leuchtet ein <strong>deutsches</strong> Wort.</li>
+      <li>Tippe rechts auf das passende <strong>englische</strong>.</li>
+      <li>Richtig: <span class="plus">+1 Punkt</span> · Falsch: <span class="minus">−2 Punkte</span></li>
+      <li>3 Level – und am Ende siehst du, was für ein Reise-Typ du bist.</li>
+    </ul>
+    <button id="los" class="knopf gross">Los geht's! ✈️</button>
+  </section>
+
+  <!-- Spiel -->
+  <section id="spiel" class="spiel" hidden>
+    <div class="oben">
+      <header class="leiste">
+        <div class="level-info">
+          <span id="level-nr" class="level-nr">Level 1</span>
+          <span id="level-name" class="level-name">Check-in</span>
+        </div>
+        <div class="fortschritt" aria-hidden="true"><span id="balken"></span></div>
+        <div id="punkte" class="punkte" aria-live="polite">⭐ <span id="punkte-zahl">0</span></div>
+      </header>
+      <div id="gesucht" class="gesucht" aria-live="polite"></div>
+    </div>
+    <div class="spalten">
+      <ol id="deutsch" class="liste deutsch" aria-label="Deutsche Wörter"></ol>
+      <div id="englisch" class="liste englisch" aria-label="Englische Wörter"></div>
+    </div>
+  </section>
+
+  <!-- Zwischen-Bildschirm und Ende -->
+  <div id="overlay" class="overlay" hidden>
+    <div id="overlay-inhalt" class="karte overlay-karte"></div>
+  </div>
+
+  <div id="konfetti" class="konfetti" aria-hidden="true"></div>
+
+  <script src="vocab.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
